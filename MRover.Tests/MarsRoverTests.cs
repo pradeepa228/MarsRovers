@@ -28,6 +28,16 @@ namespace MRover.Tests
             rover1.CurrentPosition.Y.Should().Be(1);
             rover1.CurrentPosition.Direction.Should().Be('N');
         }
-        
+
+        [Test]
+        public void Check_Rover_Is_Placed_In_A_Valid_Direction_On_The_Plateau()
+        {
+            plateau1 = new Plateau(5, 5);
+            rover1 = new Rover(plateau1);
+            rover1.checkRoverPosition(new Position(1, 1, 'Y'));
+            rover1.CurrentPosition.X.Should().Be(1);
+            rover1.CurrentPosition.Y.Should().Be(1);
+            rover1.CurrentPosition.Direction.Should().Be('Y');
+        }
     }
 }
