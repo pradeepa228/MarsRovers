@@ -8,14 +8,14 @@ namespace MRover
 {
     public class Position
     {
-           public int X { get; private set; }
-           public int Y { get; private set; }
-           public char Direction { get; private set; }
-           string stringDirection = "NEWS";
+           public int X { get;  set; }
+           public int Y { get;  set; }
+           public char Direction { get;  set; }
+           string StringDirection = "NEWS";
 
         public Position(int x, int y, char direction)
         {
-            if (x < 0 || y < 0 || !stringDirection.Contains(direction))
+            if (x < 0 || y < 0 || !StringDirection.Contains(direction))
             {
                 throw new ArgumentException("Position can not have negative values or invalid direction.");
             }
@@ -23,7 +23,6 @@ namespace MRover
             {
                 X = x;
                 Y = y;
-                Direction = direction;
                 Direction = direction;
             }
         }

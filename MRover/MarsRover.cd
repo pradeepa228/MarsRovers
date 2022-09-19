@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="MRover.Plateau">
+  <Class Name="MRover.PlateauDimensions">
     <Position X="4.75" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAA=</HashCode>
@@ -10,7 +10,7 @@
   <Class Name="MRover.Rover">
     <Position X="6" Y="1.25" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AQAAAAAAAAAAEAAAAAABAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AQAAAAAAgAAAEAAAAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
       <FileName>Rover.cs</FileName>
     </TypeIdentifier>
   </Class>

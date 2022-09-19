@@ -8,7 +8,7 @@ namespace MRover
     public class Rover
     {
         private PlateauDimensions plateaudimensions;
-        public Position CurrentPosition { get; private set; }
+        public Position CurrentPosition { get; set; }
 
         public Rover(PlateauDimensions plateaudimensions)
         {
@@ -28,8 +28,43 @@ namespace MRover
         }
         
         
-        public void moveRover(Position position)
+        public void SpinRight()
         {
+           switch (CurrentPosition.Direction)
+            {
+                case 'N':
+                    CurrentPosition.Direction = 'E';
+                    break;
+                case 'E':
+                    CurrentPosition.Direction = 'S';
+                    break;
+                case 'S':
+                    CurrentPosition.Direction = 'W';
+                    break;  
+                case 'W':
+                    CurrentPosition.Direction = 'N';
+                    break;
+            }            
+                
+        }
+
+        public void SpinLeft()
+        {
+            switch (CurrentPosition.Direction)
+            {
+                case 'N':
+                    CurrentPosition.Direction = 'W';
+                    break;
+                case 'E':
+                    CurrentPosition.Direction = 'N';
+                    break;
+                case 'S':
+                    CurrentPosition.Direction = 'E';
+                    break;
+                case 'W':
+                    CurrentPosition.Direction = 'S';
+                    break;
+            }
 
         }
     }

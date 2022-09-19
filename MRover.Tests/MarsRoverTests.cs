@@ -45,11 +45,34 @@ namespace MRover.Tests
         {
             plateau1 = new PlateauDimensions(5, 5);
             rover1 = new Rover(plateau1);
-            rover1.checkRoverPosition(new Position(1, -1, 'N'));
+            rover1.checkRoverPosition(new Position(1, 1, 'N'));
             rover1.CurrentPosition.X.Should().Be(1);
             rover1.CurrentPosition.Y.Should().Be(1);
             rover1.CurrentPosition.Direction.Should().Be('N');
         }
 
+        [Test]
+        public void Check_Rover_Is_Moved_In_Right_Direction()
+        {
+            plateau1 = new PlateauDimensions(5, 5);
+            rover1 = new Rover(plateau1);
+            rover1.checkRoverPosition(new Position(1, 1, 'W'));
+            rover1.SpinRight();
+            rover1.CurrentPosition.X.Should().Be(1);
+            rover1.CurrentPosition.Y.Should().Be(1);
+            rover1.CurrentPosition.Direction.Should().Be('N');
+        }
+
+        [Test]
+        public void Check_Rover_Is_Moved_In_Left_Direction()
+        {
+            plateau1 = new PlateauDimensions(5, 5);
+            rover1 = new Rover(plateau1);
+            rover1.checkRoverPosition(new Position(1, 1, 'W'));
+            rover1.SpinLeft();
+            rover1.CurrentPosition.X.Should().Be(1);
+            rover1.CurrentPosition.Y.Should().Be(1);
+            rover1.CurrentPosition.Direction.Should().Be('S');
+        }
     }
 }
