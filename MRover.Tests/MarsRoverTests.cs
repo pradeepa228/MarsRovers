@@ -123,5 +123,31 @@ namespace MRover.Tests
             rover1.CurrentPosition.Y.Should().Be(1);
             rover1.CurrentPosition.Direction.Should().Be('W');
         }
+
+        [Test]
+        public void Check_Rover_Is_Spinning_Right_And_Moving_Forward()
+        {
+            plateau1 = new PlateauDimensions(5, 5);
+            rover1 = new Rover(plateau1);
+            rover1.checkRoverPosition(new Position(1, 1, 'N'));
+            rover1.SpinRight();
+            rover1.MoveCommand();
+            rover1.CurrentPosition.X.Should().Be(2);
+            rover1.CurrentPosition.Y.Should().Be(1);
+            rover1.CurrentPosition.Direction.Should().Be('E');
+        }
+
+        [Test]
+        public void Check_Rover_Is_Spinning_Left_And_Moving_Forward()
+        {
+            plateau1 = new PlateauDimensions(5, 5);
+            rover1 = new Rover(plateau1);
+            rover1.checkRoverPosition(new Position(2, 2, 'N'));
+            rover1.SpinLeft();
+            rover1.MoveCommand();
+            rover1.CurrentPosition.X.Should().Be(1);
+            rover1.CurrentPosition.Y.Should().Be(2);
+            rover1.CurrentPosition.Direction.Should().Be('W');
+        }
     }
 }
