@@ -74,5 +74,54 @@ namespace MRover.Tests
             rover1.CurrentPosition.Y.Should().Be(1);
             rover1.CurrentPosition.Direction.Should().Be('S');
         }
+
+
+        [Test]
+        public void Check_Rover_Is_Moved_In_A_Forward_Direction_Of_North()
+        {
+            plateau1 = new PlateauDimensions(5, 5);
+            rover1 = new Rover(plateau1);
+            rover1.checkRoverPosition(new Position(1, 1, 'N'));
+            rover1.MoveCommand();
+            rover1.CurrentPosition.X.Should().Be(1);
+            rover1.CurrentPosition.Y.Should().Be(2);
+            rover1.CurrentPosition.Direction.Should().Be('N');
+        }
+
+        [Test]
+        public void Check_Rover_Is_Moved_In_A_Forward_Direction_Of_South()
+        {
+            plateau1 = new PlateauDimensions(5, 5);
+            rover1 = new Rover(plateau1);
+            rover1.checkRoverPosition(new Position(1, 1, 'S'));
+            rover1.MoveCommand();
+            rover1.CurrentPosition.X.Should().Be(1);
+            rover1.CurrentPosition.Y.Should().Be(0);
+            rover1.CurrentPosition.Direction.Should().Be('S');
+        }
+
+        [Test]
+        public void Check_Rover_Is_Moved_In_A_Forward_Direction_Of_East()
+        {
+            plateau1 = new PlateauDimensions(5, 5);
+            rover1 = new Rover(plateau1);
+            rover1.checkRoverPosition(new Position(1, 1, 'E'));
+            rover1.MoveCommand();
+            rover1.CurrentPosition.X.Should().Be(2);
+            rover1.CurrentPosition.Y.Should().Be(1);
+            rover1.CurrentPosition.Direction.Should().Be('E');
+        }
+
+        [Test]
+        public void Check_Rover_Is_Moved_In_A_Forward_Direction_Of_West()
+        {
+            plateau1 = new PlateauDimensions(5, 5);
+            rover1 = new Rover(plateau1);
+            rover1.checkRoverPosition(new Position(1, 1, 'W'));
+            rover1.MoveCommand();
+            rover1.CurrentPosition.X.Should().Be(0);
+            rover1.CurrentPosition.Y.Should().Be(1);
+            rover1.CurrentPosition.Direction.Should().Be('W');
+        }
     }
 }

@@ -44,8 +44,7 @@ namespace MRover
                 case 'W':
                     CurrentPosition.Direction = 'N';
                     break;
-            }            
-                
+            }   
         }
 
         public void SpinLeft()
@@ -65,7 +64,29 @@ namespace MRover
                     CurrentPosition.Direction = 'S';
                     break;
             }
+        }
+
+
+        public void MoveCommand()
+        {
+            if (CurrentPosition.Direction == 'N')
+            {
+                CurrentPosition.Y = CurrentPosition.Y + 1;
+            }
+            else if (CurrentPosition.Direction == 'E')
+            {
+                CurrentPosition.X = CurrentPosition.X + 1;
+            }
+            else if (CurrentPosition.Direction == 'S')
+            {
+                CurrentPosition.Y = CurrentPosition.Y - 1;
+            }
+            else
+            {
+                CurrentPosition.X = CurrentPosition.X - 1;
+            }
 
         }
+
     }
 }
