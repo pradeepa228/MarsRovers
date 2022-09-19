@@ -149,5 +149,46 @@ namespace MRover.Tests
             rover1.CurrentPosition.Y.Should().Be(2);
             rover1.CurrentPosition.Direction.Should().Be('W');
         }
+
+        [Test]
+        public void Check_Rover_Is_Spinning_Left__Right_And_Moving_Forward()
+        {
+            plateau1 = new PlateauDimensions(5, 5);
+            rover1 = new Rover(plateau1);
+            rover1.checkRoverPosition(new Position(1, 2, 'N'));
+            rover1.SpinLeft();
+            rover1.MoveCommand();
+            rover1.SpinLeft();
+            rover1.MoveCommand();
+            rover1.SpinLeft();
+            rover1.MoveCommand();
+            rover1.SpinLeft();
+            rover1.MoveCommand();
+            rover1.MoveCommand();
+            rover1.CurrentPosition.X.Should().Be(1);
+            rover1.CurrentPosition.Y.Should().Be(3);
+            rover1.CurrentPosition.Direction.Should().Be('N');
+        }
+
+        [Test]
+        public void Check_Rover_Is_Spinning_Left__Right_And_Moving_Forward2()
+        {
+            plateau1 = new PlateauDimensions(5, 5);
+            rover1 = new Rover(plateau1);
+            rover1.checkRoverPosition(new Position(3, 3, 'E'));
+            rover1.MoveCommand();
+            rover1.MoveCommand();
+            rover1.SpinRight();
+            rover1.MoveCommand();
+            rover1.MoveCommand();
+            rover1.SpinRight();
+            rover1.MoveCommand();
+            rover1.SpinRight();
+            rover1.SpinRight();
+            rover1.MoveCommand();           
+            rover1.CurrentPosition.X.Should().Be(5);
+            rover1.CurrentPosition.Y.Should().Be(1);
+            rover1.CurrentPosition.Direction.Should().Be('E');
+        }
     }
 }
