@@ -10,7 +10,7 @@ namespace MRover.Tests
 {
     public class MarsRoverTests
     {
-        private Plateau plateau1;
+        private PlateauDimensions plateau1;
         private Rover rover1;
 
         [SetUp]
@@ -21,7 +21,7 @@ namespace MRover.Tests
         [Test]
         public void Check_Rover_Is_Placed_In_A_Valid_Position_On_The_Plateau()
         {
-            plateau1 = new Plateau(5, 5);
+            plateau1 = new PlateauDimensions(5, 5);
             rover1 = new Rover(plateau1);
             rover1.checkRoverPosition(new Position(1, 1, 'N'));
             rover1.CurrentPosition.X.Should().Be(1);
@@ -32,12 +32,24 @@ namespace MRover.Tests
         [Test]
         public void Check_Rover_Is_Placed_In_A_Valid_Direction_On_The_Plateau()
         {
-            plateau1 = new Plateau(5, 5);
+            plateau1 = new PlateauDimensions(5, 5);
             rover1 = new Rover(plateau1);
-            rover1.checkRoverPosition(new Position(1, 1, 'Y'));
+            rover1.checkRoverPosition(new Position(1, 1, 'E'));
             rover1.CurrentPosition.X.Should().Be(1);
             rover1.CurrentPosition.Y.Should().Be(1);
-            rover1.CurrentPosition.Direction.Should().Be('Y');
+            rover1.CurrentPosition.Direction.Should().Be('E');
         }
+
+        [Test]
+        public void Check_if_It_Throws_Error_When_Placed_In_A_InValid_Position()
+        {
+            plateau1 = new PlateauDimensions(5, 5);
+            rover1 = new Rover(plateau1);
+            rover1.checkRoverPosition(new Position(1, -1, 'N'));
+            rover1.CurrentPosition.X.Should().Be(1);
+            rover1.CurrentPosition.Y.Should().Be(1);
+            rover1.CurrentPosition.Direction.Should().Be('N');
+        }
+
     }
 }

@@ -7,17 +7,17 @@ namespace MRover
 {
     public class Rover
     {
-        private Plateau plateau;
+        private PlateauDimensions plateaudimensions;
         public Position CurrentPosition { get; private set; }
 
-        public Rover(Plateau plateau)
+        public Rover(PlateauDimensions plateaudimensions)
         {
-            this.plateau = plateau;
+            this.plateaudimensions = plateaudimensions;
         }
         
         public void checkRoverPosition(Position position)
         {
-            if ((position.X > plateau.X) || (position.Y > plateau.Y))
+            if ((position.X > plateaudimensions.X) || (position.Y > plateaudimensions.Y))
             {
                 throw new ArgumentException("Rover can not be placed outside the Plateau dimension.");
             }
