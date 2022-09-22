@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
@@ -9,10 +10,11 @@ namespace MRover
     {
         private PlateauDimensions plateaudimensions;
         public Position CurrentPosition { get; set; }
+     
 
-        public Rover(PlateauDimensions plateaudimensions)
+        public Rover(Position position)
         {
-            this.plateaudimensions = plateaudimensions;
+            CurrentPosition = position;
         }
         
         public void checkRoverPosition(Position position)

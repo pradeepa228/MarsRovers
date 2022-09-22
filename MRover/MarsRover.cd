@@ -1,28 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="MRover.PlateauDimensions">
-    <Position X="4.75" Y="5" Width="1.5" />
+    <Position X="3.75" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAA=</HashCode>
       <FileName>Plateau.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MRover.Rover">
-    <Position X="6" Y="1.25" Width="2.25" />
+    <Position X="8.5" Y="2.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQAAAAAAgAAAEAAAAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AQAAAAAAgAAAAAAAAABEgAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
       <FileName>Rover.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MRover.Position">
-    <Position X="8" Y="4.5" Width="1.5" />
+    <Position X="1.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Position.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MRover.Command">
-    <Position X="2" Y="3.75" Width="2.25" />
+    <Position X="5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAA=</HashCode>
       <FileName>Command.cs</FileName>

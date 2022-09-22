@@ -12,13 +12,15 @@ namespace MRover.Tests
     {
         private PlateauDimensions plateau1;
         private Rover rover1;
+        private Controller controller1;
 
         [SetUp]
         public void Setup()
         {
+            controller1 = new Controller();
         }
-
-        [Test]
+        
+       /* [Test]
         public void Check_Rover_Is_Placed_In_A_Valid_Position_On_The_Plateau()
         {
             plateau1 = new PlateauDimensions(5, 5);
@@ -185,10 +187,30 @@ namespace MRover.Tests
             rover1.MoveCommand();
             rover1.SpinRight();
             rover1.SpinRight();
+
             rover1.MoveCommand();           
             rover1.CurrentPosition.X.Should().Be(5);
             rover1.CurrentPosition.Y.Should().Be(1);
             rover1.CurrentPosition.Direction.Should().Be('E');
+        }*/
+
+        [TestCase("3 2 N", 3,2,'N')]
+        public void Check_Rover_Is_Placed_in_correct_position_using_TestCase(string roverPosition, int XCo, int YCo, char dimension )
+        {
+            controller1.AddRover(roverPosition);
+            controller1.RoverPosition.X.Should().Be(XCo);
+            controller1.RoverPosition.Y.Should().Be(YCo);
+            controller1.RoverPosition.Direction.Should().Be(dimension);
+        }
+
+        [TestCase("1 1 N", "L",1,1,'W')]
+        public void Check_Rover_Is_Moved_As_Per_Commands(string roverPosition, string moveCommand, int XCo, int YCo, char dimension)
+        {
+            controller1.AddRover(roverPosition);
+            controller1.MoveRover(moveCommand);
+            controller1.RoverPosition.X.Should().Be(XCo);
+            controller1.RoverPosition.Y.Should().Be(YCo);
+            controller1.RoverPosition.Direction.Should().Be(dimension);
         }
     }
 }
