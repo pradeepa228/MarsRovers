@@ -17,9 +17,7 @@ namespace MRover
 
 
         public Position(int x, int y, char direction)
-        {
-            
-                       
+        {                                 
             if (x < 0 || y < 0 || !StringDirection.Contains(direction))
             {
                 throw new ArgumentException("Position can not have negative values or invalid direction.");

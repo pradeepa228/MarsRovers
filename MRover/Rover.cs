@@ -8,7 +8,7 @@ namespace MRover
 {
     public class Rover
     {
-        private PlateauDimensions plateaudimensions;
+        private Plateau plateau;
         public Position CurrentPosition { get; set; }
      
 
@@ -17,9 +17,9 @@ namespace MRover
             CurrentPosition = position;
         }
         
-        public void checkRoverPosition(Position position)
+        public void AddRoverPosition(Position position)
         {
-            if ((position.X > plateaudimensions.X) || (position.Y > plateaudimensions.Y))
+            if ((position.X > plateau.X) || (position.Y > plateau.Y))
             {
                 throw new ArgumentException("Rover can not be placed outside the Plateau dimension.");
             }
@@ -32,7 +32,7 @@ namespace MRover
         
         public void SpinRight()
         {
-           switch (CurrentPosition.Direction)
+            switch (CurrentPosition.Direction)
             {
                 case 'N':
                     CurrentPosition.Direction = 'E';
@@ -87,8 +87,6 @@ namespace MRover
             {
                 CurrentPosition.X = CurrentPosition.X - 1;
             }
-
         }
-
     }
 }

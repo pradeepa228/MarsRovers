@@ -5,12 +5,12 @@ using System.Text;
 
 namespace MRover
 {
-    public class PlateauDimensions
+    public class Plateau
     {
         public int X { get; private set; }
         public int Y { get; private set; }
 
-        public PlateauDimensions(int x, int y)
+        public Plateau(int x, int y)
         {
             if (x < 0 || y < 0)
             {
