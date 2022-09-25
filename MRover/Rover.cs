@@ -20,14 +20,14 @@ namespace MRover
         public void ValidateRoverPosition(Plateau plateau, Position position)
         {
 
-            
+
             if (plateau is null)
             {
                 throw new NullReferenceException("Rover can not be created without a Plateau.");
             }
 
             if ((position.X > plateau.X) || (position.Y > plateau.Y))
-            {                
+            {
                 throw new ArgumentException("Rover can not be placed outside the Plateau dimension.");
             }
             else

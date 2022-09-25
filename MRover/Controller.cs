@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace MRover
 {
     public class Controller
-    {        
+    {
         public Position RoverPosition { get => rover.CurrentPosition; }
         private Plateau plateau;
         private Rover rover;
@@ -57,12 +57,10 @@ namespace MRover
         public void SplitInputByLines(string stringInput)
         {
             var splitString = stringInput.Split(linesDelimeter);
-
             if (splitString.Length % 2 != 1)
-            {                 
+            {
                 throw new ArgumentException("Incorrect format of input");
             }
-
             modifiedInput = splitString;
         }
 
@@ -70,7 +68,6 @@ namespace MRover
         public static string[] SetPlateauInput(string modifiedInput)
         {
             string[] splitString = modifiedInput.Split(' ');
-
             var plateau = new Plateau(Convert.ToInt32(splitString[0]), Convert.ToInt32(splitString[1]));
             return splitString;
         }

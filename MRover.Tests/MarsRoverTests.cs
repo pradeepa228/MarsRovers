@@ -82,7 +82,7 @@ namespace MRover.Tests
 
         [Test]
         public void Check_Rover_Is_Moved_In_Left_Direction()
-        {      
+        {
             rover1.ValidateRoverPosition(new Plateau(5, 5), new Position(1, 1, 'W'));
             rover1.SpinLeft();
             rover1.CurrentPosition.X.Should().Be(1);

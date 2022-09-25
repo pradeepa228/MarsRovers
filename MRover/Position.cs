@@ -20,21 +20,21 @@ namespace MRover
 
         public Position(int x, int y, char roverDirection)
         {
-           if (x < 0 || y < 0)
+            if (x < 0 || y < 0)
             {
                 throw new ArgumentException("Position can not have negative values.");
             }
-           else if (!Enum.IsDefined(typeof(Directions), char.ToString(roverDirection)))
-           {
+            else if (!Enum.IsDefined(typeof(Directions), char.ToString(roverDirection)))
+            {
 
                 throw new ArgumentException("Position can not have an invalid direction.");
-           }
-           else
-           {
+            }
+            else
+            {
                 X = x;
                 Y = y;
                 Direction = roverDirection;
-           }
+            }
         }
 
     }
