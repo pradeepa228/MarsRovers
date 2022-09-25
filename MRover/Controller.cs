@@ -9,108 +9,114 @@ using System.Threading.Tasks;
 namespace MRover
 {
     public class Controller
-    {
-        private string stringInput;
+    {        
         public Position RoverPosition { get => rover.CurrentPosition; }
         private Plateau plateau;
         private Rover rover;
-        
-        private static string currentDirection;
-        private static string command;
+        public Commands Commands;
+        public Directions Direction;
 
+        private string stringInput;
+        private static string command;
         private static string[] modifiedInput;
         private const char linesDelimeter = '\n';
         private const char parametersDelimeter = ' ';
-        /// <summary>
-        /// expectedNumberOfInputLines will have plateau dimension, rover position, move commands
-        /// </summary>
-        private const int expectedNumberOfInputInALine = 3;
         int lengthOfInputs = 0;
         string outputString;
-        string finalRoverPosition="";
+        string finalRoverPosition = "";
+        string[] plateauDimension;
 
-
-        public Controller()
-        {
-            this.stringInput = stringInput;
-        }
         public string MissionControl(string stringInput)
         {
+            //Splitting the input by lines
             SplitInputByLines(stringInput);
-            SetPlateauInput(modifiedInput[0]);
+            //Set Plateau
+            plateauDimension = SetPlateauInput(modifiedInput[0]);
+
+            //Set Rover and move the Rover as per commands
             lengthOfInputs = modifiedInput.Length;
-            Console.WriteLine("Length" + modifiedInput.Length);
+
             for (int iteration = 1; iteration < modifiedInput.Length; iteration++)
             {
                 if (iteration % 2 != 0)
                 {
-                    Console.WriteLine("Odd number");
-                    SetRoverPosition(modifiedInput[iteration]);
+                    SetRoverPosition(plateauDimension, modifiedInput[iteration]);
                 }
                 else
                 {
-                    Console.WriteLine("Even number");
                     outputString = MoveRover(modifiedInput[iteration]);
                     finalRoverPosition = string.Concat(finalRoverPosition, outputString, linesDelimeter);
-                    Console.WriteLine("Concatenation" + finalRoverPosition);
+
                 }
             }
             return finalRoverPosition;
         }
-    
-           
+
+
 
         public void SplitInputByLines(string stringInput)
         {
             var splitString = stringInput.Split(linesDelimeter);
-            
-            if (splitString.Length %2 != 1)
-            {
-                Console.WriteLine("Incorrect format of input");
-                //   throw new Incorrect Input FormatException();
+
+            if (splitString.Length % 2 != 1)
+            {                 
+                throw new ArgumentException("Incorrect format of input");
             }
 
             modifiedInput = splitString;
         }
 
 
-         public static void SetPlateauInput(string modifiedInput)
-         {
-            var splitString = modifiedInput.Split(' ');
-            
-            var plateau = new Plateau(Convert.ToInt32(splitString[0]), Convert.ToInt32(splitString[1])); 
-         }
+        public static string[] SetPlateauInput(string modifiedInput)
+        {
+            string[] splitString = modifiedInput.Split(' ');
 
-         public void SetRoverPosition(string roverInput)
+            var plateau = new Plateau(Convert.ToInt32(splitString[0]), Convert.ToInt32(splitString[1]));
+            return splitString;
+        }
+
+        public void SetRoverPosition(string[] plateauDimension, string roverInput)
         {
             var roverPosition = roverInput.Split(' ');
+            int plateauDimensionX = Convert.ToInt32(plateauDimension[0]);
+            int plateauDimensionY = Convert.ToInt32(plateauDimension[1]);
+            int roverXposition = Convert.ToInt32(roverPosition[0]);
+            int roverYposition = Convert.ToInt32(roverPosition[1]);
+            char roverDirection = Convert.ToChar(roverPosition[2]);
 
-            rover = new Rover(new Position(Convert.ToInt32(roverPosition[0]), Convert.ToInt32(roverPosition[1]), Convert.ToChar(roverPosition[2])));
-
+            rover = new Rover(new Position(roverXposition, roverYposition, roverDirection));
+            rover.ValidateRoverPosition(new Plateau(plateauDimensionX, plateauDimensionY), new Position(roverXposition, roverYposition, roverDirection));
         }
 
         public string MoveRover(string moveInput)
         {
-            string roverPosition ="";
+            string roverPosition = "";
             char[] movements = moveInput.ToCharArray();
 
-            foreach ( char command in movements)
+            foreach (char oneCommand in movements)
             {
-                if (command == 'L')
+                if (Enum.IsDefined(typeof(Commands), char.ToString(oneCommand)))
                 {
-                    rover.SpinLeft();
+                    if (oneCommand == 'L')
+                    {
+                        rover.SpinLeft();
+                    }
+                    else if (oneCommand == 'R')
+                    {
+                        rover.SpinRight();
+                    }
+                    else if (oneCommand == 'M')
+                    {
+                        rover.MoveCommand();
+                    }
                 }
-                else if (command == 'R')
+                else
                 {
-                    rover.SpinRight();
-                }
-                else if (command == 'M')
-                {
-                    rover.MoveCommand();
+                    throw new ArgumentException("Incorrect Move inputs.Valid Inputs are L or M or R");
                 }
             }
-            roverPosition = string.Concat(rover.CurrentPosition.X," " ,rover.CurrentPosition.Y," ", rover.CurrentPosition.Direction);
+            roverPosition = string.Concat(rover.CurrentPosition.X, " ", rover.CurrentPosition.Y, " ", rover.CurrentPosition.Direction);
             return roverPosition;
-        }    
+        }
     }
 }

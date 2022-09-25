@@ -10,17 +10,24 @@ namespace MRover
     {
         private Plateau plateau;
         public Position CurrentPosition { get; set; }
-     
+
 
         public Rover(Position position)
         {
             CurrentPosition = position;
         }
-        
-        public void AddRoverPosition(Position position)
+
+        public void ValidateRoverPosition(Plateau plateau, Position position)
         {
-            if ((position.X > plateau.X) || (position.Y > plateau.Y))
+
+            
+            if (plateau is null)
             {
+                throw new NullReferenceException("Rover can not be created without a Plateau.");
+            }
+
+            if ((position.X > plateau.X) || (position.Y > plateau.Y))
+            {                
                 throw new ArgumentException("Rover can not be placed outside the Plateau dimension.");
             }
             else
@@ -28,8 +35,8 @@ namespace MRover
                 CurrentPosition = position;
             }
         }
-        
-        
+
+
         public void SpinRight()
         {
             switch (CurrentPosition.Direction)
@@ -42,11 +49,11 @@ namespace MRover
                     break;
                 case 'S':
                     CurrentPosition.Direction = 'W';
-                    break;  
+                    break;
                 case 'W':
                     CurrentPosition.Direction = 'N';
                     break;
-            }   
+            }
         }
 
         public void SpinLeft()
@@ -83,7 +90,7 @@ namespace MRover
             {
                 CurrentPosition.Y = CurrentPosition.Y - 1;
             }
-            else
+            else if (CurrentPosition.Direction == 'W')
             {
                 CurrentPosition.X = CurrentPosition.X - 1;
             }
