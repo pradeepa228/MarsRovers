@@ -10,4 +10,5 @@ Added logic for Rover : Rover position should be within plateau dimension. Direc
 Controller will have the logic to check plateau dimension, rover positio and a call to move rover.
 
 Added Enum for Directions and Movements separately.
+Added Logic for Collision. Added Rover position with rover number in Hash Table and While MOving, checked the ROver current position with Hash table and throw exception it matches
 
