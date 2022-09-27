@@ -14,11 +14,9 @@ namespace MRover
         public int X { get; set; }
         public int Y { get; set; }
         public char Direction { get; set; }
+        public int RoverNumber { get; set; }
 
-
-
-
-        public Position(int x, int y, char roverDirection)
+        public Position(int x, int y, char roverDirection, int roverNumber)
         {
             if (x < 0 || y < 0)
             {
@@ -34,6 +32,7 @@ namespace MRover
                 X = x;
                 Y = y;
                 Direction = roverDirection;
+                RoverNumber = roverNumber;
             }
         }
 
